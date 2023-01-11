@@ -1,7 +1,6 @@
 const Card = require('../models/card');
 const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
-// const ValidationError = require('../errors/ValidationError');
 const BadRequest = require('../errors/BadRequest'); // 400
 
 const getCards = async (req, res, next) => {

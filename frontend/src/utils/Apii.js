@@ -11,7 +11,7 @@ class Apii {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -22,7 +22,7 @@ class Apii {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -34,7 +34,7 @@ class Apii {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${hasMyLike ? "DELETE" : "PUT"}`,
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -45,7 +45,7 @@ class Apii {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -57,7 +57,7 @@ class Apii {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -69,7 +69,7 @@ class Apii {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -81,7 +81,7 @@ class Apii {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
-        authorization: "f94fe150-fc6f-49bf-839d-cc1279afa58f",
+        authorization: "0c17b8f1-bd43-4421-9bac-9ef9ac9316c5",
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -95,5 +95,5 @@ class Apii {
 }
 
 export const apii = new Apii({
-  baseUrl: "https://nomoreparties.co/v1/cohort-42",
+  baseUrl: "localhost:3000",
 });

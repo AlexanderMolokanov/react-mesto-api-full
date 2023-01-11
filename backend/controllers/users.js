@@ -4,9 +4,6 @@ const userSchema = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const ConflictError = require('../errors/ConflictError');
-// const ValidationError = require('../errors/ValidationError');
-
-// const WrongDataError = require('../errors/wrong-data-err');
 const BadRequest = require('../errors/BadRequest'); // 400
 
 const { NODE_ENV, JWT_SECRET } = process.env;

@@ -1,13 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const rateLimit = require('express-rate-limit');
-
 const bodyParser = require('body-parser');
 
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
 const helmet = require('helmet');
+const cors = require('./middlewares/cors');
 const { handleError } = require('./errors/handleError');
 const NotFoundError = require('./errors/NotFoundError');
 require('dotenv').config();
@@ -24,8 +24,9 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
-app.use(requestLogger);
 app.use(helmet());
+app.use(cors);
+app.use(requestLogger);
 
 app.use(limiter);
 app.use(bodyParser.json());
