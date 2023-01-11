@@ -1,0 +1,11 @@
+.element {
+    border-radius: 10px;
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+}

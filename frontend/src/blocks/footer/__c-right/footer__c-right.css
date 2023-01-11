@@ -1,0 +1,17 @@
+.footer__c-right {
+    margin: 0;
+    padding: 0;
+    color: #545454;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+}
+
+@media screen and (max-width:1200px) {
+    .footer__c-right {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

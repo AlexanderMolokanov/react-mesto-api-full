@@ -1,0 +1,4 @@
+const NOT_FOUND = 404;
+const INTERNAL_SERVER_ERROR = 500;
+
+module.exports = { NOT_FOUND, INTERNAL_SERVER_ERROR };

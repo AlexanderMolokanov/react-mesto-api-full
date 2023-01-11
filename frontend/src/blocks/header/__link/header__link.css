@@ -1,0 +1,19 @@
+.header__link {
+  transition: opacity 0.3s;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0 27px 0 0;
+}
+
+.header__link:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+  .header__link {
+    line-height: 22px;
+    font-size: 18px;
+    padding: 0 0 0 24px;
+  }
+}

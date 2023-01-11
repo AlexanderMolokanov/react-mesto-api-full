@@ -1,0 +1,9 @@
+.popup__image-frame {
+    padding: 0;
+    margin: 0;
+    max-width: 75vw;
+    max-height: 75vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}

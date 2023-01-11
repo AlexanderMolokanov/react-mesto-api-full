@@ -1,0 +1,19 @@
+.popup__label {
+    color: black;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 29px;
+    text-align: left;
+    padding: 0 0 19px 0;
+    margin: 0;
+    display: block;
+}
+
+@media screen and (max-width: 530px) {
+    .popup__label {
+        font-size: 18px;
+        line-height: 22px;
+        padding: 0 0 45px 0;
+    }
+}

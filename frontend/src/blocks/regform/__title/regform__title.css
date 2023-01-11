@@ -1,0 +1,17 @@
+.regform__title {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+  line-height: 29px;
+  color: white;
+  margin: 19px 0 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .regform__title {
+    font-size: 20px;
+    line-height: 24px;
+    margin: -3px 0 39px;
+  }
+}

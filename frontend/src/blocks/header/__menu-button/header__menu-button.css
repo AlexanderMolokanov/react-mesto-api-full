@@ -1,0 +1,25 @@
+.header__menu-button {
+  width: 24px;
+  border: none;
+  display: block;
+  background: url(../../../images/burger_menu.svg) center no-repeat;
+  margin: 0 27px 0 0;
+  background-size: 100%;
+  height: 21px;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+}
+
+.header__menu-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+  .header__menu-button {
+    display: none;
+  }
+}

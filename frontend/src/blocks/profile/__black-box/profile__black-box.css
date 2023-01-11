@@ -1,0 +1,25 @@
+.profile__black-box {
+    width: 120px;
+    height: 120px;
+    background-color: black;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-image: url(../../../images/edit_profile.svg);
+    background-position: center;
+    background-size: 26px;
+    cursor: pointer;
+    display: block;
+    background-repeat: no-repeat;
+    z-index: 1;
+    border-radius: 100%;
+    transition: opacity .5s;
+    transition-delay: 0s;
+}
+
+.profile__black-box:hover {
+    opacity: .8;
+}

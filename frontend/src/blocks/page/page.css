@@ -1,0 +1,27 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0;
+    padding: 60px 200px 45px;
+    
+    box-sizing: border-box;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-box-sizing: border-box;
+}
+
+@media screen and (max-width:1200px) {
+    .page {
+        padding: 60px 0 45px;
+    }
+}
+
+@media screen and (max-width:781px) {
+    .page {
+        padding: 0;
+    }
+}

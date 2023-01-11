@@ -1,0 +1,29 @@
+.regform__input {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #cccccc;
+  background-color: black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  padding: 0 1px 9px;
+  margin-bottom: 30px;
+  outline: 0;
+}
+
+.regform__input:-webkit-autofill,
+.regform__input:-webkit-autofill:hover, 
+.regform__input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* border: 1px solid green; */
+  -webkit-text-fill-color:  white;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

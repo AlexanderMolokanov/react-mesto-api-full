@@ -1,0 +1,32 @@
+.regform {
+  margin: 40px 0 51px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 358px;
+  padding-left: 261px;
+  padding-right: 261px;
+
+  /* width: 100%; */
+  /* margin: 0 auto; */
+}
+
+@media screen and (max-width: 955px) {
+  .regform {
+    padding-left: 61px;
+    padding-right: 61px;
+    
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .regform {
+        margin: 40px 0 36px;
+        padding-left: 0;
+        padding-right: 0;
+    min-width: 260px;
+    /* margin: 0 auto; */
+    
+  }
+}
