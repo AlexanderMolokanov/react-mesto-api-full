@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import React from 'react';
 
 export function PopupWithForm({
   title,
@@ -8,6 +9,7 @@ export function PopupWithForm({
   onClose,
   buttonLabel,
   onSubmit,
+  isValid
 }) {
   const handleEscClose = (e) => e.key === "Escape" && onClose(e);
 
@@ -30,9 +32,9 @@ export function PopupWithForm({
           onClick={onClose}
         ></button>
         <h2 className="popup__label">{title}</h2>
-        <form className="popup__form" name={name} onSubmit={onSubmit}>
+        <form className="popup__form" name={name} onSubmit={onSubmit} noValidate>
           {children}
-          <button className="popup__button-save" type="submit">
+          <button className={`popup__button-save ${isValid ? '' : 'popup__button-save_disabled'}`} type="submit">
             {buttonLabel}
           </button>
         </form>

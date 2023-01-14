@@ -5,12 +5,29 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
   const [name, setName] = useState(null);
   const [link, setLink] = useState(null);
 
+  const [isValidName, setIsValidName] = useState(true);
+  const [isValidLink, setIsValidLink] = useState(true);
+  const [isValidButton, setIsValidButton] = useState(false);
+
+  const [errorsName, setErrorsName] = useState([]);
+  const [errorsLink, setErrorsLink] = useState([]);
+
   const handleChange = (e) => {
     if (e.target.name === "placeName") {
       setName(e.target.value);
+      setIsValidName(e.target.checkValidity());
+      setErrorsName(e.target.validationMessage);
+      setIsValidButton(true
+        // isValidName && isValidLink
+        )
     }
     if (e.target.name === "placeLink") {
       setLink(e.target.value);
+      setIsValidLink(e.target.checkValidity());
+      setErrorsLink(e.target.validationMessage);
+      setIsValidButton(true
+        // isValidName && isValidLink
+        )
     }
   };
 
@@ -29,28 +46,30 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
     }
   }, [isOpen]);
 
-  return (
+ return (
     <PopupWithForm
-      isOpen={isOpen}
-      onClose={onClose}
-      onSubmit={submitHandler}
       title="Новое место"
       name="place"
       buttonLabel="Сохранить"
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={submitHandler}
+      isValid={isValidButton}
     >
       <div className="popup__input-wrapper">
         <input
-          required
+          className="popup__input"
+          value={name || ''}
+          onChange={handleChange}
+          placeholder="Название"
+          name="placeName"
           minLength="2"
           maxLength="200"
-          className="popup__input"
-          name="placeName"
           type="text"
-          placeholder="Название"
-          onChange={handleChange}
-          value={name || ""}
+          required
         />
-        <span className="popup__error"></span>
+        <span className={`popup__error ${isValidName ? '' : 'popup__error_state_visible'}`}>{errorsName}</span>
+
       </div>
 
       <div className="popup__input-wrapper">
@@ -61,9 +80,9 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
           name="placeLink"
           placeholder="Ссылка на картинку"
           onChange={handleChange}
-          value={link || ""}
+          value={link || ''}
         />
-        <span className="popup__error"></span>
+        <span className={`popup__error ${isValidLink ? '' : 'popup__error_state_visible'}`}>{errorsLink}</span>
       </div>
     </PopupWithForm>
   );

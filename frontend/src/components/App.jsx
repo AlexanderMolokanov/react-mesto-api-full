@@ -11,7 +11,7 @@ import Footer from "./Footer";
 import Main from "./Main";
 import { EditProfilePopup } from "./EditProfilePopup";
 import { EditAvatarPopup } from "./EditAvatarPopup";
-import { AddPlacePopup } from "./AddPlacePopup";
+import {AddPlacePopup} from "./AddPlacePopup";
 import { ImagePopup } from "./ImagePopup";
 import { apiiReg } from "../utils/ApiiReg";
 import { apii } from "../utils/Apii";
@@ -249,7 +249,7 @@ function App() {
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={handlePopupClose}
-            onAddCard={handleAddPlaceSubmit}
+            onAddPlace={handleAddPlaceSubmit}
           />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
