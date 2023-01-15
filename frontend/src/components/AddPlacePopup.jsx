@@ -55,6 +55,7 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
       onClose={onClose}
       onSubmit={submitHandler}
       isValid={isValidButton}
+      // isValid={isValidName && isValidLink} 
     >
       <div className="popup__input-wrapper">
         <input

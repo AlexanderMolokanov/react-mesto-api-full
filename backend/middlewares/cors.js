@@ -1,6 +1,6 @@
 const allowedCors = [
-  'http://domainname.andrey.nomoredomains.sbs',
-  'https://domainname.andrey.nomoredomains.sbs',
+  // 'http://domainname.andrey.nomoredomains.sbs',
+  // 'https://domainname.andrey.nomoredomains.sbs',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
