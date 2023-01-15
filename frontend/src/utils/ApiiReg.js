@@ -10,6 +10,7 @@ class ApiiReg {
   signup(singupPayload) {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
@@ -21,6 +22,7 @@ class ApiiReg {
   isJwtValid() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -31,8 +33,10 @@ class ApiiReg {
 
   //  авторизация
   signin(signinPayload) {
+    console.log(`Bearer ${localStorage.getItem("jwt")}`)
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
+      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
@@ -43,5 +47,5 @@ class ApiiReg {
 }
 
 export const apiiReg = new ApiiReg({
-  baseUrl: "https://auth.nomoreparties.co",
+  baseUrl: "http://localhost:3000", 
 });

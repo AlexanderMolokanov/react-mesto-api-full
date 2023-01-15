@@ -10,6 +10,7 @@ class Apii {
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -21,6 +22,7 @@ class Apii {
   loadAllCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -33,6 +35,7 @@ class Apii {
   toggleLike(cardId, hasMyLike) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: `${hasMyLike ? "DELETE" : "PUT"}`,
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -44,6 +47,7 @@ class Apii {
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -56,6 +60,7 @@ class Apii {
   setUserInfo(user) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -68,6 +73,7 @@ class Apii {
   setAvatar(avatarLink) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -80,6 +86,7 @@ class Apii {
   postCard(card) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
+      credentials: 'include',
       headers: {
         authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
@@ -95,5 +102,5 @@ class Apii {
 }
 
 export const apii = new Apii({
-  baseUrl: "localhost:3000",
+  baseUrl: "http://localhost:3000",
 });
