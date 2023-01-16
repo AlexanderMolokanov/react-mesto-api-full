@@ -8,6 +8,7 @@ class ApiiReg {
 
   // регистрация
   signup(singupPayload) {
+    console.log(singupPayload)
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       credentials: 'include',
@@ -39,7 +40,7 @@ class ApiiReg {
       credentials: 'include',
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
       body: JSON.stringify(signinPayload),
     }).then((res) => this._resHandler(res));

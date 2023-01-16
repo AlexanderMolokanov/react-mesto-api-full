@@ -9,7 +9,6 @@ const { errors } = require('celebrate');
 
 const helmet = require('helmet');
 const cors = require('./middlewares/cors');
-// const cors = require('cors');
 const { handleError } = require('./errors/handleError');
 const NotFoundError = require('./errors/NotFoundError');
 const routes = require('./routes');
@@ -17,25 +16,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 const { PORT = 3000 } = process.env;
-
-// const options = {
-//   origin: [
-//     'http://localhost:3000',
-//     'http://localhost:3001',
-//     'http://localhost:3001/users/me',
-//     'https://gmkv.nomoredomains.work',
-//     'https://gmkvam.nomoredomains.work',
-//     'http://gmkv.nomoredomains.work',
-//     'http://gmkvam.nomoredomains.work',
-//     'https://gmkv.nomoredomains.work/users/me',
-//   ],
-//   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-//   preflightContinue: false,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
-//   credentials: true,
-// };
-// app.use('*', cors(options));
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,

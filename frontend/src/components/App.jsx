@@ -20,6 +20,9 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { Login } from "./Login";
 import { Register } from "./Register";
 import { InfoTooltip } from "./InfoTooltip";
+import 
+* as 
+auth from '../utils/auth';
 
 function App() {
   // хуки
@@ -34,9 +37,14 @@ function App() {
   const [cards, setCards] = useState([]);
   const [isSuccessPopupOpen, setSuccessPopupOpen] = useState(false);
   const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [profileEmail, setProfileEmail] = useState('');
+  // const [isAddPhoto, setIsAddPhoto] = useState(false);
 
   // юзэффекты
 
+
+  
   // регистрация
   const handleRegistration = (signupPayload) => {
     apiiReg
@@ -47,6 +55,43 @@ function App() {
       .catch(handleError);
   };
 
+//Проверка токена и авторизация пользователя
+// useEffect(() => {
+//   const jwt = localStorage.getItem('jwt');
+//   if (jwt) {
+//     auth.getContent(jwt)
+//       .then(res => {
+//         if (res) {
+//           setIsLoggedIn(true)
+//           // setProfileEmail(res.email)
+//         }
+//         history.push('/')
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       })
+//   }
+// });
+
+// useEffect(() => {
+//   if (isLoggedIn) {
+//     apii.getUserInfo().then((profileInfo) => {
+//       setCurrentUser(profileInfo)
+//     })
+//       .catch((err) => {
+//         console.log(err);
+//       })
+
+//     apii.getCards().then((cardsData) => {
+//       setCards(cardsData)
+//     })
+//       .catch((err) => {
+//         console.log(err);
+//       })
+//     }
+
+// }, [isLoggedIn, isAddPhoto]);
+
   // авторизация
   const onLogin = (loginDatas) => {
     if (!loginDatas.email || !loginDatas.password) {
@@ -55,13 +100,8 @@ function App() {
     apiiReg
       .signin(loginDatas)
       .then((res) => {
+        console.log(res.token)
         res.token && localStorage.setItem("jwt", res.token);
-
-        // this.setState(this.setState({username: '', password: ''}),() => {
-
-        //   this.props.handleLogin();
-        //   history.push('/');
-
         setCurrentUser((prev) => {
           return { ...prev, isLoggedIn: true, email: loginDatas.email };
         });
@@ -229,6 +269,7 @@ function App() {
             </Route>
             <ProtectedRoute
               path="/"
+              loggedIn={isLoggedIn}
               component={Main}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
@@ -246,10 +287,10 @@ function App() {
             onClose={handlePopupClose}
             onUserUpdate={handleUserUpdate}
           />
-          <AddPlacePopup
+          <AddPlacePopup 
             isOpen={isAddPlacePopupOpen}
             onClose={handlePopupClose}
-            onAddPlace={handleAddPlaceSubmit}
+            onAddCard={handleAddPlaceSubmit}
           />
           <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
