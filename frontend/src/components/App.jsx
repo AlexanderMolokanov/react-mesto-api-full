@@ -97,15 +97,21 @@ function App() {
     if (!loginDatas.email || !loginDatas.password) {
       return;
     }
-    apiiReg
+    apiiReg        
       .signin(loginDatas)
       .then((res) => {
-        console.log(res.token)
-        res.token && localStorage.setItem("jwt", res.token);
+        // console.log(res.token)
+        // res.token && localStorage.setItem("jwt", res.token);
+        if(res) {
+          // setLoggedIn(true);
         setCurrentUser((prev) => {
           return { ...prev, isLoggedIn: true, email: loginDatas.email };
         });
         setCards(cards);
+      }
+      // } else {
+      //   setIsOpenTooltip(true);
+      // }
       })
       .catch(handleError);
   };

@@ -13,6 +13,7 @@ class ApiiReg {
       method: "POST",
       credentials: 'include',
       headers: {
+        'Accept': 'application/json',
         "Content-Type": "application/json",
       },
       body: JSON.stringify(singupPayload),
@@ -25,7 +26,7 @@ class ApiiReg {
       method: "GET",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -34,16 +35,21 @@ class ApiiReg {
 
   //  авторизация
   signin(signinPayload) {
-    console.log(`Bearer ${localStorage.getItem("jwt")}`)
     return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       credentials: 'include',
       headers: {
         "Content-Type": "application/json",
+        'Accept': 'application/json',
         // authorization: `Bearer ${localStorage.getItem("jwt")}`,
       },
       body: JSON.stringify(signinPayload),
-    }).then((res) => this._resHandler(res));
+    }).then((res) => this._resHandler(res))
+    .then((data) => {
+      if (data.token){
+        return data;
+      } 
+    });
   }
 }
 

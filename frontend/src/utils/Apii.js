@@ -19,12 +19,13 @@ class Apii {
     }).then((res) => this._resHandler(res));
   }
 
+  
   loadAllCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -37,7 +38,7 @@ class Apii {
       method: `${hasMyLike ? "DELETE" : "PUT"}`,
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -49,7 +50,7 @@ class Apii {
       method: "DELETE",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -62,7 +63,7 @@ class Apii {
       method: "PATCH",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
@@ -75,7 +76,7 @@ class Apii {
       method: "PATCH",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        // authorization: `Bearer ${localStorage.getItem("jwt")}`,
         "Content-Type": "application/json",
         Accept: "application/json: charset=utf-8",
       },
