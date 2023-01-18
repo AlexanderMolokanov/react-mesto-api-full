@@ -49,8 +49,17 @@ function App() {
   const handleRegistration = (signupPayload) => {
     apiiReg
       .signup(signupPayload)
-      .then(() => {
-        handleSuccess();
+      .then((res) => {
+        console.log(res)
+        if 
+        (res)
+          // .status === 201)
+         {
+        setSuccessPopupOpen(true);
+        // handleSuccess();
+        history.push('/')
+      }
+      // return res.json();
       })
       .catch(handleError);
   };
@@ -119,8 +128,8 @@ function App() {
   // аутентификация
 
   useEffect(() => {
-    const jwte = localStorage.getItem("jwt");
-    jwte &&
+    // const jwte = localStorage.getItem("jwt");
+    // jwte &&
       apiiReg
         .isJwtValid()
         .then((res) => {
