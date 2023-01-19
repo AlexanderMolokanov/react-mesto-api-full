@@ -31,13 +31,15 @@ function App() {
   const [cards, setCards] = useState([]);
   const [isSuccessPopupOpen, setSuccessPopupOpen] = useState(false);
   const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function onSignOut() {
     apiiReg.logOut();
-    setIsLoggedIn(false);
     setCurrentUser({ isLoggedIn: false });
     history.push("/sign-in");
+  }
+
+  function handleClickLogin() {
+    history.push("/");
   }
 
   // регистрация
@@ -50,7 +52,6 @@ function App() {
         if (res) {
           // .status === 201)
           setSuccessPopupOpen(true);
-          history.push("/");
         }
         // return res.json();
       })
@@ -73,54 +74,27 @@ function App() {
             return { ...prev, isLoggedIn: true, email: loginDatas.email };
           });
           setCards(cards);
-          history.push("/");
         }
-        history.push("/");
       })
       .catch(handleError).
       catch(() => {
-        // setIsLoggedIn(false);
         setCurrentUser((prev) => {
           return { ...prev, isLoggedIn: false};
         });
       });
+      
   };
 
-  // аутентификация
-
-  // useEffect(() => {
-  //   // isLoggedIn &&
-  //     apiiReg
-  //       .isJwtValid()
-  //       .then((res) => {
-  //         setCurrentUser((prev) => {
-  //           return {
-  //             ...prev,
-  //             ...res.data,
-  //             isLoggedIn: true,
-  //           };
-  //         });
-  //       })
-  //       .catch((error) => console.log(error));
-  // }, []);
-
-  // useEffect(() => {
-  //   apii.getUserInfo().then(([user, cards]) => {
-  //     setCurrentUser((prev) => {
-  //       return { ...prev, ...user };
-  //     });
-  //     // setCards(cards);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  //   // history.push("/");
-  // }, []);
+  useEffect(() => {
+    if (currentUser?.isLoggedIn) {
+      history.push('/'); 
+    }
+  },[history, currentUser?.isLoggedIn]);
 
 
 
 
-  //  Делаем запрос на получение данных пользователя и карточек
+    //  Делаем запрос на получение данных пользователя и карточек
   useEffect(() => {
     // if (loggedIn) {
       apii
@@ -134,12 +108,12 @@ function App() {
                       isLoggedIn: true,
                     };
                   });
-        setIsLoggedIn(true);
-        history.push('/');
+        // setIsLoggedIn(true);
+        // history.push('/');
         // setProfileEmail(res.email);
       })
       .catch(() => {
-        setIsLoggedIn(false);
+        // setIsLoggedIn(false);
         setCurrentUser((prev) => {
           return {
             ...prev,
@@ -165,28 +139,21 @@ function App() {
     // }
   }, []);
 
-
-
   // загрузка данных пользователя
   useEffect(() => {
-    currentUser.isLoggedIn &&
+    currentUser?.isLoggedIn &&
       Promise.all([apii.getUserInfo(), apii.loadAllCards()])
         .then(([user, cards]) => {
           setCurrentUser((prev) => {
             return { ...prev, ...user };
           });
           setCards(cards);
-          history.push('/');
+          // history.push('/');
         })
         .catch((error) => {
           console.log(error);
         });
-  }, [currentUser.isLoggedIn]);
-
-  
-
-  
-  
+  }, [currentUser?.isLoggedIn]);
 
   const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setIsEditProfilePopupOpen(true);
@@ -300,11 +267,12 @@ function App() {
               <Login onSubmit={onLogin} />
             </Route>
             <Route path="/sign-up">
-              <Register onSubmit={handleRegistration} />
+              <Register onSubmit={handleRegistration}                    
+              />
             </Route>
             <ProtectedRoute
               path="/"
-              loggedIn={isLoggedIn}
+              loggedIn={currentUser?.isLoggedIn}
               component={Main}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
@@ -313,6 +281,7 @@ function App() {
               cards={cards}
               onCardDelete={handleCardDelete}
               onCardLike={handleCardLike}
+              onClick={handleClickLogin}
             ></ProtectedRoute>
           </Switch>
           <Footer />

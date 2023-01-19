@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const RegForm = ({ onSubmit, title, buttonLabel, hint }) => {
+export const RegForm = ({ onSubmit, title, buttonLabel, hint, onClick }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -22,32 +22,6 @@ export const RegForm = ({ onSubmit, title, buttonLabel, hint }) => {
     setEmail(null);
     setPassword(null);
   };
-
-  // function FriendStatusWithCounter(props) {
-  //   const [count, setCount] = useState(0);
-  //   useEffect(() => {
-  //     document.title = `Вы нажали ${count} раз`;
-  //   });
-  
-  //   const [isOnline, setIsOnline] = useState(null);
-  //   useEffect(() => {
-  //     function handleStatusChange(status) {
-  //       setIsOnline(status.isOnline);
-  //     }
-  
-  //     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-  //     return () => {
-  //       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-  //     };
-  //   });
-  //   // ...
-  // }
-
-
-
-
-
-
 
   return (
     <main className="content">
@@ -75,7 +49,7 @@ export const RegForm = ({ onSubmit, title, buttonLabel, hint }) => {
           maxLength="40"
           value={password || ""}
         />
-        <button className="regform__submit-button" type="submit">
+        <button className="regform__submit-button" type="submit" onClick={onClick}>
           {buttonLabel}
         </button>
         {hint ? hint : <></>}

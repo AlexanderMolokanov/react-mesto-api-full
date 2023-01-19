@@ -11,6 +11,7 @@ export function Main({
   cards,
   onCardLike,
   onCardDelete,
+  onClick
 }) {
   const currentUser = useContext(CurrentUserContext);
   const section = () => {
