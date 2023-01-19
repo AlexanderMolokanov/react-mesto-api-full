@@ -60,9 +60,9 @@ function App() {
   // авторизация
   const onLogin = (loginDatas) => {
     console.log(`авторизация: ${loginDatas}`)
-    if (!loginDatas.email || !loginDatas.password) {
-      return;
-    }
+    // if (!loginDatas.email || !loginDatas.password) {
+    //   return;
+    // }
     apiiReg
       .signin(loginDatas)
       .then((res) => {
@@ -77,7 +77,13 @@ function App() {
         }
         history.push("/");
       })
-      .catch(handleError);
+      .catch(handleError).
+      catch(() => {
+        // setIsLoggedIn(false);
+        setCurrentUser((prev) => {
+          return { ...prev, isLoggedIn: false};
+        });
+      });
   };
 
   // аутентификация
