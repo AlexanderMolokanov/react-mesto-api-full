@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import {
-  // Routes,
   Route,
   Switch,
   useHistory,
-  // useNavigate
 } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
 import { EditProfilePopup } from "./EditProfilePopup";
 import { EditAvatarPopup } from "./EditAvatarPopup";
-import {AddPlacePopup} from "./AddPlacePopup";
+import { AddPlacePopup } from "./AddPlacePopup";
 import { ImagePopup } from "./ImagePopup";
 import { apiiReg } from "../utils/ApiiReg";
 import { apii } from "../utils/Apii";
@@ -20,15 +18,11 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { Login } from "./Login";
 import { Register } from "./Register";
 import { InfoTooltip } from "./InfoTooltip";
-import 
-* as 
-auth from '../utils/auth';
 
 function App() {
   // хуки
   let history = useHistory();
 
-  // Состояния
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -38,89 +32,50 @@ function App() {
   const [isSuccessPopupOpen, setSuccessPopupOpen] = useState(false);
   const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [profileEmail, setProfileEmail] = useState('');
-  // const [isAddPhoto, setIsAddPhoto] = useState(false);
 
-  // юзэффекты
+  function onSignOut() {
+    apiiReg.logOut();
+    setIsLoggedIn(false);
+    setCurrentUser({ isLoggedIn: false });
+    history.push("/sign-in");
+  }
 
-
-  
   // регистрация
   const handleRegistration = (signupPayload) => {
+    console.log(`регистрация: ${signupPayload}`)
     apiiReg
       .signup(signupPayload)
       .then((res) => {
-        console.log(res)
-        if 
-        (res)
+        console.log(res);
+        if (res) {
           // .status === 201)
-         {
-        setSuccessPopupOpen(true);
-        // handleSuccess();
-        history.push('/')
-      }
-      // return res.json();
+          setSuccessPopupOpen(true);
+          history.push("/");
+        }
+        // return res.json();
       })
       .catch(handleError);
   };
 
-//Проверка токена и авторизация пользователя
-// useEffect(() => {
-//   const jwt = localStorage.getItem('jwt');
-//   if (jwt) {
-//     auth.getContent(jwt)
-//       .then(res => {
-//         if (res) {
-//           setIsLoggedIn(true)
-//           // setProfileEmail(res.email)
-//         }
-//         history.push('/')
-//       })
-//       .catch(err => {
-//         console.log(err);
-//       })
-//   }
-// });
-
-// useEffect(() => {
-//   if (isLoggedIn) {
-//     apii.getUserInfo().then((profileInfo) => {
-//       setCurrentUser(profileInfo)
-//     })
-//       .catch((err) => {
-//         console.log(err);
-//       })
-
-//     apii.getCards().then((cardsData) => {
-//       setCards(cardsData)
-//     })
-//       .catch((err) => {
-//         console.log(err);
-//       })
-//     }
-
-// }, [isLoggedIn, isAddPhoto]);
-
   // авторизация
   const onLogin = (loginDatas) => {
+    console.log(`авторизация: ${loginDatas}`)
     if (!loginDatas.email || !loginDatas.password) {
       return;
     }
-    apiiReg        
+    apiiReg
       .signin(loginDatas)
       .then((res) => {
         // console.log(res.token)
         // res.token && localStorage.setItem("jwt", res.token);
-        if(res) {
-          // setLoggedIn(true);
-        setCurrentUser((prev) => {
-          return { ...prev, isLoggedIn: true, email: loginDatas.email };
-        });
-        setCards(cards);
-      }
-      // } else {
-      //   setIsOpenTooltip(true);
-      // }
+        if (res) {
+          setCurrentUser((prev) => {
+            return { ...prev, isLoggedIn: true, email: loginDatas.email };
+          });
+          setCards(cards);
+          history.push("/");
+        }
+        history.push("/");
       })
       .catch(handleError);
   };
@@ -128,8 +83,7 @@ function App() {
   // аутентификация
 
   useEffect(() => {
-    // const jwte = localStorage.getItem("jwt");
-    // jwte &&
+    // isLoggedIn &&
       apiiReg
         .isJwtValid()
         .then((res) => {
@@ -176,16 +130,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const onSignOut = () => {
-    localStorage.removeItem("jwt");
-    setCurrentUser({ isLoggedIn: false });
-    history.push("/sign-in");
-  };
-
   const handleError = () => setErrorPopupOpen(true);
-  const handleSuccess = () => {
-    setSuccessPopupOpen(true);
-  };
 
   const handleCardDelete = (card) =>
     apii
@@ -274,7 +219,7 @@ function App() {
     <div className="whole-page">
       <div className="page">
         <CurrentUserContext.Provider value={currentUser}>
-          <Header onLogoutClick={onSignOut} />
+          <Header onSignOut={onSignOut} />
           <Switch>
             <Route path="/sign-in">
               <Login onSubmit={onLogin} />
@@ -302,7 +247,7 @@ function App() {
             onClose={handlePopupClose}
             onUserUpdate={handleUserUpdate}
           />
-          <AddPlacePopup 
+          <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={handlePopupClose}
             onAddCard={handleAddPlaceSubmit}
@@ -336,4 +281,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 

@@ -1,10 +1,12 @@
 import React from "react";
-import { useContext, useState, componentDidUpdate, NameClassComponent, useForceUpdate  } from "react";
+import { useContext, useState, 
+  // componentDidUpdate, NameClassComponent, useForceUpdate  
+} from "react";
 import { useLocation, Link } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import logo from "../images/header_logo.svg";
 
-function Header({ onLogoutClick }) {
+function Header({ onSignOut }) {
   const currentUser = useContext(CurrentUserContext);
   const [menuIsOpen, setMenuIsOpen] = useState(true);
 
@@ -13,7 +15,7 @@ function Header({ onLogoutClick }) {
   const toggleMenu = () => setMenuIsOpen(!menuIsOpen);
 
   const logoutMobile = () => {
-    onLogoutClick();
+    onSignOut();
     setMenuIsOpen(true);
   };
   
@@ -70,7 +72,7 @@ function Header({ onLogoutClick }) {
 
               <Link
                 className="header__link header__link_logout"
-                onClick={onLogoutClick}
+                onClick={onSignOut}
                 to="#"
               >
                 Выйти

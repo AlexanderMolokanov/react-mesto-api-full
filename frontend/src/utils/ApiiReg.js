@@ -6,6 +6,14 @@ class ApiiReg {
   _resHandler = (res) =>
     res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 
+      // Метод проверки ответа и преобразование в json
+  _getResponseData = (res) => {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
+  }
+
   // регистрация
   signup(singupPayload) {
     console.log(singupPayload)
@@ -51,6 +59,21 @@ class ApiiReg {
       } 
     });
   }
+
+  logOut = () => {
+    return fetch(`${this._baseUrl}`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: "include",
+    })
+    .then(res => this._getResponseData(res))
+  }
+  
+
+  
 }
 
 export const apiiReg = new ApiiReg({

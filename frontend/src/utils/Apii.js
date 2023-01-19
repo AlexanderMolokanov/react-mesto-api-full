@@ -85,6 +85,7 @@ class Apii {
   }
 
   postCard(card) {
+    console.log(card)
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       credentials: 'include',
@@ -96,7 +97,7 @@ class Apii {
       body: JSON.stringify({
         name: card.name,
         link: card.link,
-        image: card.name,
+        // image: card.name,
       }),
     }).then((res) => this._resHandler(res));
   }

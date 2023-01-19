@@ -8,7 +8,7 @@ export const InfoTooltip = ({ children, isOpen, onClose }) => {
       document.addEventListener("keydown", handleEscClose);
     }
     return () => document.removeEventListener("keydown", handleEscClose);
-  }, [isOpen]);
+  }, [isOpen]); 
 
   return (
     <div className={isOpen ? "popup popup_opened" : "popup "} onClick={onClose}>
