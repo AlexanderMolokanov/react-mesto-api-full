@@ -49,7 +49,7 @@ app.use(errorLogger);
 // app.get('/signout', (req, res) => {
 //   res.clearCookie('jwt').send({ message: 'Выход' });
 // });
-
+  
 app.use((req, res, next) => next(new NotFoundError('Маршрут не найден')));
 // обработчик ошибок celebrate
 app.use(errors());

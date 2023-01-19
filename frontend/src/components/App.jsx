@@ -88,21 +88,84 @@ function App() {
 
   // аутентификация
 
+  // useEffect(() => {
+  //   // isLoggedIn &&
+  //     apiiReg
+  //       .isJwtValid()
+  //       .then((res) => {
+  //         setCurrentUser((prev) => {
+  //           return {
+  //             ...prev,
+  //             ...res.data,
+  //             isLoggedIn: true,
+  //           };
+  //         });
+  //       })
+  //       .catch((error) => console.log(error));
+  // }, []);
+
+  // useEffect(() => {
+  //   apii.getUserInfo().then(([user, cards]) => {
+  //     setCurrentUser((prev) => {
+  //       return { ...prev, ...user };
+  //     });
+  //     // setCards(cards);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  //   // history.push("/");
+  // }, []);
+
+
+
+
+  //  Делаем запрос на получение данных пользователя и карточек
   useEffect(() => {
-    // isLoggedIn &&
-      apiiReg
-        .isJwtValid()
-        .then((res) => {
-          setCurrentUser((prev) => {
-            return {
-              ...prev,
-              ...res.data,
-              isLoggedIn: true,
-            };
-          });
-        })
-        .catch((error) => console.log(error));
+    // if (loggedIn) {
+      apii
+      .getUserInfo()
+      .then((res) => {
+        // setCurrentUser(res);
+        setCurrentUser((prev) => {
+                    return {
+                      ...prev,
+                      ...res.data,
+                      isLoggedIn: true,
+                    };
+                  });
+        setIsLoggedIn(true);
+        history.push('/');
+        // setProfileEmail(res.email);
+      })
+      .catch(() => {
+        setIsLoggedIn(false);
+        setCurrentUser((prev) => {
+          return {
+            ...prev,
+            // ...res.data,
+            isLoggedIn: false,
+          };
+        });
+        history.push('/sign-in')
+      });
+
+      // setIsLoad(true);
+      // api
+      //   .getInitialCards()
+      //   .then((values) => {
+      //     setCards(values);
+      //   })
+      //   .catch(() => {
+      //     console.log(`Вы не авторизованы`);
+      //   })
+      //   .finally(() => {
+      //     setIsLoad(false);
+      //   });
+    // }
   }, []);
+
+
 
   // загрузка данных пользователя
   useEffect(() => {
@@ -113,11 +176,17 @@ function App() {
             return { ...prev, ...user };
           });
           setCards(cards);
+          history.push('/');
         })
         .catch((error) => {
           console.log(error);
         });
   }, [currentUser.isLoggedIn]);
+
+  
+
+  
+  
 
   const handleEditAvatarClick = () => setIsEditAvatarPopupOpen(true);
   const handleEditProfileClick = () => setIsEditProfilePopupOpen(true);

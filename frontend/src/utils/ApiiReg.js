@@ -60,6 +60,7 @@ class ApiiReg {
     });
   }
 
+
   logOut = () => {
     return fetch(`${this._baseUrl}/signout`, {
       method: 'GET',

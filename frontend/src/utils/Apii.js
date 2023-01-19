@@ -6,7 +6,7 @@ class Apii {
   _resHandler = (res) =>
     res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
 
-  // Имя, аватар
+    // Получить данные пользователя
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
