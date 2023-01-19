@@ -16,7 +16,7 @@ class ApiiReg {
 
   // регистрация
   signup(singupPayload) {
-    console.log(singupPayload)
+    // console.log(singupPayload)
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
       credentials: 'include',

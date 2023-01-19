@@ -85,7 +85,7 @@ class Apii {
   }
 
   postCard(card) {
-    console.log(card)
+    // console.log(card)
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       credentials: 'include',

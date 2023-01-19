@@ -42,11 +42,11 @@ function App() {
 
   // регистрация
   const handleRegistration = (signupPayload) => {
-    console.log(`регистрация: ${signupPayload}`)
+    // console.log(`регистрация: ${signupPayload}`)
     apiiReg
       .signup(signupPayload)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res) {
           // .status === 201)
           setSuccessPopupOpen(true);
@@ -59,7 +59,7 @@ function App() {
 
   // авторизация
   const onLogin = (loginDatas) => {
-    console.log(`авторизация: ${loginDatas}`)
+    // console.log(`авторизация: ${loginDatas}`)
     // if (!loginDatas.email || !loginDatas.password) {
     //   return;
     // }
