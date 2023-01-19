@@ -61,7 +61,7 @@ class ApiiReg {
   }
 
   logOut = () => {
-    return fetch(`${this._baseUrl}`, {
+    return fetch(`${this._baseUrl}/signout`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

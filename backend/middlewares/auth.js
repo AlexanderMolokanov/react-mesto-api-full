@@ -3,7 +3,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-module.exports = async (req, res, next) => {
+const auth = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
     const secret = NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret';
@@ -20,4 +20,8 @@ module.exports = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+};
+
+module.exports = {
+  auth
 };

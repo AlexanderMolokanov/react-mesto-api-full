@@ -32,18 +32,23 @@ app.use(limiter);
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(cookieParser());
 
 mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(routes);
 app.use(errorLogger);
 
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
+// app.get('/signout', (req, res) => {
+//   res.clearCookie('jwt').send({ message: 'Выход' });
+// });
 
 app.use((req, res, next) => next(new NotFoundError('Маршрут не найден')));
 // обработчик ошибок celebrate

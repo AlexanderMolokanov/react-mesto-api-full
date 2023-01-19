@@ -131,13 +131,19 @@ const login = async (req, res, next) => {
             sameSite: true,
           })
           .send(modelToDto(user))
-          
+
           .end();
       }
     }
   } catch (err) {
     next(err);
   }
+};
+
+const logOut = async (req, res, next) => {
+  res.clearCookie('jwt');
+  res.status(200).send({ message: 'You unauthorized' });
+  next();
 };
 
 const getUserMe = async (req, res, next) => {
@@ -166,4 +172,5 @@ module.exports = {
   updateAvatar,
   login,
   getUserMe,
+  logOut
 };
