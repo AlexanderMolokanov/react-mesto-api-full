@@ -32,6 +32,12 @@ function App() {
   const [isSuccessPopupOpen, setSuccessPopupOpen] = useState(false);
   const [isErrorPopupOpen, setErrorPopupOpen] = useState(false);
 
+  useEffect(() => {
+    if (currentUser?.isLoggedIn) {
+      history.push('/'); 
+    }
+  },[history, currentUser?.isLoggedIn]);
+  
   function onSignOut() {
     apiiReg.logOut();
     setCurrentUser({ isLoggedIn: false });
@@ -54,6 +60,8 @@ function App() {
           setSuccessPopupOpen(true);
         }
         // return res.json();
+        // handleClickLogin()
+        history.push('/'); 
       })
       .catch(handleError);
   };
@@ -85,22 +93,12 @@ function App() {
       
   };
 
-  useEffect(() => {
-    if (currentUser?.isLoggedIn) {
-      history.push('/'); 
-    }
-  },[history, currentUser?.isLoggedIn]);
-
-
-
-
-    //  Делаем запрос на получение данных пользователя и карточек
+      //  Делаем запрос на получение данных пользователя и карточек
   useEffect(() => {
     // if (loggedIn) {
       apii
       .getUserInfo()
       .then((res) => {
-        // setCurrentUser(res);
         setCurrentUser((prev) => {
                     return {
                       ...prev,
@@ -108,9 +106,7 @@ function App() {
                       isLoggedIn: true,
                     };
                   });
-        // setIsLoggedIn(true);
         // history.push('/');
-        // setProfileEmail(res.email);
       })
       .catch(() => {
         // setIsLoggedIn(false);
@@ -267,7 +263,8 @@ function App() {
               <Login onSubmit={onLogin} />
             </Route>
             <Route path="/sign-up">
-              <Register onSubmit={handleRegistration}                    
+              <Register onSubmit={handleRegistration}  
+              // onClik={handleClickLogin  }                  
               />
             </Route>
             <ProtectedRoute
@@ -281,7 +278,7 @@ function App() {
               cards={cards}
               onCardDelete={handleCardDelete}
               onCardLike={handleCardLike}
-              onClick={handleClickLogin}
+              // onClick={handleClickLogin}
             ></ProtectedRoute>
           </Switch>
           <Footer />

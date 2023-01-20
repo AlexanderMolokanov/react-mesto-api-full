@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { RegForm } from "./RegForm";
 
-export const Register = ({ onSubmit }) => {
+export const Register = ({ onSubmit, onClick }) => {
   const currentUser = useContext(CurrentUserContext);
   
 
@@ -14,6 +14,7 @@ export const Register = ({ onSubmit }) => {
       title="Регистрация"
       buttonLabel="Зарегистрироваться"
       onSubmit={onSubmit} 
+      onClick={onClick}
       hint={
         <p className="regform__hint">
           {`Уже зарегистрированы? `}

@@ -23,6 +23,11 @@ export const RegForm = ({ onSubmit, title, buttonLabel, hint, onClick }) => {
     setPassword(null);
   };
 
+  // const clickHandler = (e) => {
+  //   e.preventDefault();
+  //   onClick();
+  // };
+
   return (
     <main className="content">
       <form className="regform" onSubmit={submitHandler}>
@@ -49,7 +54,9 @@ export const RegForm = ({ onSubmit, title, buttonLabel, hint, onClick }) => {
           maxLength="40"
           value={password || ""}
         />
-        <button className="regform__submit-button" type="submit" onClick={onClick}>
+        <button className="regform__submit-button" type="submit" 
+        // onClick={clickHandler}
+        >
           {buttonLabel}
         </button>
         {hint ? hint : <></>}
