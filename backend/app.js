@@ -15,7 +15,7 @@ const routes = require('./routes');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV, MONGODB_ADDRESS  } = process.env;
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -46,6 +46,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   res => { res.err/** handle initial connection error */ }
 );
 
+socket.once("mongoose.connect", (args) => {
+  // ...
+});
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -65,8 +69,21 @@ app.use(errors());
 // централизованная обработка ошибок
 app.use((err, req, res, next) => handleError({ res, err, next }));
 
-app.listen(PORT, (err) => {
-  if (!err) {
-    console.log(`порт слушает ${PORT}!`);
-  }
-});
+// app.listen(PORT, (err) => {
+//   if (!err) {
+//     console.log(`порт слушает ${PORT}!`);
+//   }
+// });
+
+// app.listen
+
+async function main() {
+  await mongoose.connect(NODE_ENV === 'production' ? MONGODB_ADDRESS: 'mongodb://localhost:27017/mestodb');
+  app.listen(PORT, (err) => {
+      if (!err) {
+        console.log(`порт слушает ${PORT}!`);
+      }
+    });
+}
+
+main();
