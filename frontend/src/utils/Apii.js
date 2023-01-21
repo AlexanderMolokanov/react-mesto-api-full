@@ -104,5 +104,5 @@ class Apii {
 }
 
 export const apii = new Apii({
-  baseUrl: "http://localhost:3000",
+  baseUrl: "http://84.252.128.231",
 });
