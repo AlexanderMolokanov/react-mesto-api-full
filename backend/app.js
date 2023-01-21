@@ -46,9 +46,9 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   res => { res.err/** handle initial connection error */ }
 );
 
-socket.once("mongoose.connect", (args) => {
-  // ...
-});
+// socket.once("mongoose.connect", (args) => {
+//   // ...
+// });
 
 app.get('/crash-test', () => {
   setTimeout(() => {
