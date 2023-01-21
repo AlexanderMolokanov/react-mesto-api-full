@@ -53,11 +53,11 @@ class ApiiReg {
       },
       body: JSON.stringify(signinPayload),
     }).then((res) => this._resHandler(res))
-    .then((data) => {
-      if (data.token){
-        return data;
-      } 
-    });
+    // .then((data) => {
+    //   if (data.token){
+    //     return data;
+    //   } 
+    // });
   }
 
 

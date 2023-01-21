@@ -24,7 +24,6 @@ export const EditAvatarPopup = ({ isOpen, onClose, onAvatarUpdate }) => {
   };
 
   const handleChange = (e) => {
-    
     if (e.target.name === "avatarLink") {
       setIsValidJob(e.target.checkValidity());
       setErrorsJob(e.target.validationMessage);

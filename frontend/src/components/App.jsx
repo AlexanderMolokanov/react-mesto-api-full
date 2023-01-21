@@ -60,7 +60,6 @@ function App() {
           setSuccessPopupOpen(true);
         }
         // return res.json();
-        // handleClickLogin()
         history.push('/'); 
       })
       .catch(handleError);
@@ -79,7 +78,9 @@ function App() {
         // res.token && localStorage.setItem("jwt", res.token);
         if (res) {
           setCurrentUser((prev) => {
-            return { ...prev, isLoggedIn: true, email: loginDatas.email };
+            return { ...prev, isLoggedIn: true, email: loginDatas.email, 
+              avatar:res.avatar, name: res.name, about: res.about
+            };
           });
           setCards(cards);
         }
@@ -90,7 +91,6 @@ function App() {
           return { ...prev, isLoggedIn: false};
         });
       });
-      
   };
 
       //  Делаем запрос на получение данных пользователя и карточек
@@ -104,6 +104,7 @@ function App() {
                       ...prev,
                       ...res.data,
                       isLoggedIn: true,
+                      // avatar: res.avatar
                     };
                   });
         // history.push('/');
@@ -119,20 +120,6 @@ function App() {
         });
         history.push('/sign-in')
       });
-
-      // setIsLoad(true);
-      // api
-      //   .getInitialCards()
-      //   .then((values) => {
-      //     setCards(values);
-      //   })
-      //   .catch(() => {
-      //     console.log(`Вы не авторизованы`);
-      //   })
-      //   .finally(() => {
-      //     setIsLoad(false);
-      //   });
-    // }
   }, []);
 
   // загрузка данных пользователя
