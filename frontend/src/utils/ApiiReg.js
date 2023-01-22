@@ -78,5 +78,5 @@ class ApiiReg {
 }
 
 export const apiiReg = new ApiiReg({
-  baseUrl: "http://api.84.252.128.231", 
+  baseUrl: "http://84.252.128.231", 
 });
