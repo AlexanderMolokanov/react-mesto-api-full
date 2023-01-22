@@ -104,5 +104,5 @@ class Apii {
 }
 
 export const apii = new Apii({
-  baseUrl: "http://84.252.128.231/api",
+  baseUrl: "http://api.84.252.128.231",
 });

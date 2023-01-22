@@ -9,6 +9,9 @@ const allowedCors = [
   'https://localhost:3001',
   'http://84.252.128.231',
   'https://84.252.128.231',
+  'http://api.84.252.128.231',
+  'https://api.84.252.128.231',
+  'https://api.84.252.128.231/users/me',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
