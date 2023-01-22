@@ -6,3 +6,6 @@
 http://84.252.128.231
 
 
+IP  84.252.128.231
+Frontend  https://api.gmkv.nomoredomains.rocks
+Backend  https://gmkv.nomoredomains.rocks
