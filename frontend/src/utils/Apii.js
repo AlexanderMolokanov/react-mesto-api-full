@@ -104,5 +104,5 @@ class Apii {
 }
 
 export const apii = new Apii({
-  baseUrl: "http://api.gmkv.nomoredomains.rocks",
+  baseUrl: "https://api.gmkv.nomoredomains.rocks",
 });

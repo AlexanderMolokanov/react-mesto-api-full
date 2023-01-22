@@ -78,5 +78,5 @@ class ApiiReg {
 }
 
 export const apiiReg = new ApiiReg({
-  baseUrl: "http://api.gmkv.nomoredomains.rocks", 
+  baseUrl: "https://api.gmkv.nomoredomains.rocks", 
 });
