@@ -4,8 +4,8 @@ const  { logOut } = require('../controllers/users');
 // const auth = require('../middlewares/auth');
 
 // router.use(auth);
-router.use('/api', require('./users'));
-router.use('/api', require('./cards'));
+router.use('/', require('./users'));
+router.use('/', require('./cards'));
 router.use('/signout', logOut);
 
 router.use('*', (req, res, next) => {
