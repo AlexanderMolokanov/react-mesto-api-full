@@ -69,14 +69,6 @@ app.use(errors());
 // централизованная обработка ошибок
 app.use((err, req, res, next) => handleError({ res, err, next }));
 
-// app.listen(PORT, (err) => {
-//   if (!err) {
-//     console.log(`порт слушает ${PORT}!`);
-//   }
-// });
-
-// app.listen
-
 async function main() {
   await mongoose.connect(NODE_ENV === 'production' ? MONGODB_ADDRESS: 'mongodb://localhost:27017/mestodb');
   app.listen(PORT, (err) => {
