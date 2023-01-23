@@ -5,7 +5,7 @@ export const EditAvatarPopup = ({ isOpen, onClose, onAvatarUpdate }) => {
   const avatarRef = useRef();
 
   const [isValidLink, setIsValidJob] = useState(true);
-  const [isValidButton, setIsValidButton] = useState(false);
+  // const [isValidButton, setIsValidButton] = useState(false);
   
   const [errorsJob, setErrorsJob] = useState([]);
 
@@ -19,7 +19,7 @@ export const EditAvatarPopup = ({ isOpen, onClose, onAvatarUpdate }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     onAvatarUpdate({
-      avatar: avatarRef.current.value,
+      avatar: avatarRef.current.value, 
     });
   };
 
@@ -27,7 +27,7 @@ export const EditAvatarPopup = ({ isOpen, onClose, onAvatarUpdate }) => {
     if (e.target.name === "avatarLink") {
       setIsValidJob(e.target.checkValidity());
       setErrorsJob(e.target.validationMessage);
-      setIsValidButton(isValidLink)
+      // setIsValidButton(isValidLink)
     }
   };
 
@@ -39,7 +39,8 @@ export const EditAvatarPopup = ({ isOpen, onClose, onAvatarUpdate }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={submitHandler}
-      isValid={isValidButton}
+      // isValid={isValidButton}
+      isValid={true}
     >
       <div className="popup__input-wrapper">
         <input

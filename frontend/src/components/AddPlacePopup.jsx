@@ -7,7 +7,7 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
 
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLink, setIsValidLink] = useState(true);
-  const [isValidButton, setIsValidButton] = useState(false);
+  // const [isValidButton, setIsValidButton] = useState(false);
 
   const [errorsName, setErrorsName] = useState([]);
   const [errorsLink, setErrorsLink] = useState([]);
@@ -17,17 +17,17 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
       setName(e.target.value);
       setIsValidName(e.target.checkValidity());
       setErrorsName(e.target.validationMessage);
-      setIsValidButton(true
-        // isValidName && isValidLink
-        )
+      // setIsValidButton(true
+      //   // isValidName && isValidLink
+      //   )
     }
-    if (e.target.name === "placeLink") {
+    if (e.target.name === "placeLink") { 
       setLink(e.target.value);
       setIsValidLink(e.target.checkValidity());
       setErrorsLink(e.target.validationMessage);
-      setIsValidButton(true
-        // isValidName && isValidLink
-        )
+      // setIsValidButton(true
+      //   // isValidName && isValidLink
+      //   )
     }
   };
 
@@ -54,8 +54,9 @@ export const AddPlacePopup = ({ isOpen, onClose, onAddCard }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={submitHandler}
-      isValid={isValidButton}
-      // isValid={isValidName && isValidLink} 
+      // isValid={isValidButton}
+      isValid={true}
+      // isValid={(!isValidName && !isValidLink)} 
     >
       <div className="popup__input-wrapper">
         <input

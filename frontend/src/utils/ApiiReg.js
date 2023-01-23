@@ -53,11 +53,6 @@ class ApiiReg {
       },
       body: JSON.stringify(signinPayload),
     }).then((res) => this._resHandler(res))
-    // .then((data) => {
-    //   if (data.token){
-    //     return data;
-    //   } 
-    // });
   }
 
 
@@ -78,5 +73,7 @@ class ApiiReg {
 }
 
 export const apiiReg = new ApiiReg({
-  baseUrl: "https://api.gmkv.nomoredomains.rocks", 
+  baseUrl: 
+  // "https://api.gmkv.nomoredomains.rocks", 
+  "http://localhost:3000"
 });

@@ -12,7 +12,7 @@ export const EditProfilePopup = ({ isOpen, onClose, onUserUpdate }) => {
 
   const [isValidName, setIsValidName] = useState(true);
   const [isValidJob, setIsValidJob] = useState(true);
-  const [isValidButton, setIsValidButton] = useState(false);
+  // const [isValidButton, setIsValidButton] = useState(false);
 
   const [errorsName, setErrorsName] = useState([]);
   const [errorsJob, setErrorsJob] = useState([]);
@@ -29,17 +29,17 @@ export const EditProfilePopup = ({ isOpen, onClose, onUserUpdate }) => {
       setName(e.target.value);
       setIsValidName(e.target.checkValidity());
       setErrorsName(e.target.validationMessage);
-      setIsValidButton(true
-        // isValidName && isValidJob
-        )
+      // setIsValidButton(true
+      //   // isValidName && isValidJob
+      //   )
     }
     if (e.target.name === "jobInput") {
       setDescription(e.target.value);
       setIsValidJob(e.target.checkValidity());
       setErrorsJob(e.target.validationMessage);
-      setIsValidButton(true
-        // isValidName && isValidJob
-        )
+      // setIsValidButton(true
+      //   // isValidName && isValidJob
+      //   )
     }
   };
 
@@ -59,7 +59,8 @@ export const EditProfilePopup = ({ isOpen, onClose, onUserUpdate }) => {
       onClose={onClose}
       onSubmit={submitHandler}
       buttonLabel="Сохранить"
-      isValid={isValidButton}
+      // isValid={isValidButton}
+      isValid={true}
     >
       <div className="popup__input-wrapper">
         <input
@@ -86,7 +87,7 @@ export const EditProfilePopup = ({ isOpen, onClose, onUserUpdate }) => {
           name="jobInput"
           placeholder="Род деятельности"
           onChange={handleChange}
-          value={description || ""}
+          value={description || ""} 
         />
         <span className={`popup__error ${isValidJob ? '' : 'popup__error_state_visible'}`}>{errorsJob}</span>
       </div>
