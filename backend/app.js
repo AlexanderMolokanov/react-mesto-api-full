@@ -41,14 +41,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 })
-.then(
-  (res) => { res/** ready to use. The `mongoose.connect()` promise resolves to mongoose instance. */ },
-  res => { res.err/** handle initial connection error */ }
-);
-
-// socket.once("mongoose.connect", (args) => {
-//   // ...
-// });
+// .then(
+//   (res) => { res/** ready to use. The `mongoose.connect()` promise resolves to mongoose instance. */ },
+//   res => { res.err/** handle initial connection error */ }
+// );
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -59,9 +55,9 @@ app.get('/crash-test', () => {
 app.use(routes);
 app.use(errorLogger);
 
-// app.get('/signout', (req, res) => {
-//   res.clearCookie('jwt').send({ message: 'Выход' });
-// });
+app.get('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+});
 
 app.use((req, res, next) => next(new NotFoundError('Маршрут не найден')));
 // обработчик ошибок celebrate

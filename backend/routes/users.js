@@ -21,6 +21,7 @@ const {
 // роуты, не требующие авторизации - регистрация и логин
 router.post('/signin', signInValidation, login);
 router.post('/signup', signUpValidation, createUser);
+
 // авторизация
 router.use(auth);
 

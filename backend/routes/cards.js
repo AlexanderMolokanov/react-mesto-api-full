@@ -14,7 +14,7 @@ const {
 } = require('../middlewares/validatons');
 
 // авторизация
-// router.use(auth);
+router.use(auth);
 
 router.get('/cards', getCards);
 router.post('/cards', createCardValidation, createCard);
