@@ -3,6 +3,8 @@ const allowedCors = [
   'https://gmkv.nomoredomains.rocks',
   'http://gmkv.nomoredomains.rocks',
   'https://gmkv.nomoredomains.rocks',
+  'http://api.gmkv.nomoredomains.rocks',
+  'https://api.gmkv.nomoredomains.rocks',
   'http://localhost:3000',
   'https://localhost:3000',
   'http://localhost:3001',
