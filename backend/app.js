@@ -34,13 +34,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost:27017/mestodb', {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-})
+// mongoose.set('strictQuery', false);
+// mongoose.connect('mongodb://localhost:27017/mestodb', {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false,
+//   useUnifiedTopology: true,
+// })
 
 app.get('/crash-test', () => {
   setTimeout(() => {
