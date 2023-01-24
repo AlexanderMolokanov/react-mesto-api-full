@@ -21,7 +21,7 @@ class ApiiReg {
       method: "POST",
       credentials: 'include',
       headers: {
-        'Accept': 'application/json',
+        'Accept': 'application/json', 
         "Content-Type": "application/json",
       },
       body: JSON.stringify(singupPayload),
@@ -74,6 +74,6 @@ class ApiiReg {
 
 export const apiiReg = new ApiiReg({
   baseUrl: 
-  // "https://api.gmkv.nomoredomains.rocks", 
-  "http://localhost:3000"
+  "https://api.gmkv.nomoredomains.rocks", 
+  // "http://localhost:3000"
 });

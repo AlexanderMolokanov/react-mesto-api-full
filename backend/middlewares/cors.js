@@ -1,8 +1,6 @@
 const allowedCors = [
   'http://gmkv.nomoredomains.rocks',
   'https://gmkv.nomoredomains.rocks',
-  'http://gmkv.nomoredomains.rocks',
-  'https://gmkv.nomoredomains.rocks',
   'http://api.gmkv.nomoredomains.rocks',
   'https://api.gmkv.nomoredomains.rocks',
   'http://localhost:3000',
@@ -14,6 +12,7 @@ const allowedCors = [
   'http://api.84.252.128.231',
   'https://api.84.252.128.231',
   'http://api.84.252.128.231/users/me',
+  'https://api.gmkv.nomoredomains.rocks/users/me',
 ];
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
