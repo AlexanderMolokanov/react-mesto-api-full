@@ -8,7 +8,8 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 
 const helmet = require('helmet');
-const cors = require('./middlewares/cors');
+// const cors = require('./middlewares/cors');
+const cors = require('cors');
 const { handleError } = require('./errors/handleError');
 const NotFoundError = require('./errors/NotFoundError');
 const routes = require('./routes');
@@ -16,7 +17,30 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const app = express();
 const { PORT = 3000, NODE_ENV, MONGODB_ADDRESS  } = process.env;
-
+const options = {
+  origin: [
+    'http://gmkv.nomoredomains.rocks',
+  'https://gmkv.nomoredomains.rocks',
+  'http://api.gmkv.nomoredomains.rocks',
+  'https://api.gmkv.nomoredomains.rocks',
+  'http://localhost:3000',
+  'https://localhost:3000',
+  'http://localhost:3001',
+  'https://localhost:3001',
+  'http://84.252.128.231',
+  'https://84.252.128.231',
+  'http://api.84.252.128.231',
+  'https://api.84.252.128.231',
+  'http://api.84.252.128.231/users/me',
+  'https://api.gmkv.nomoredomains.rocks/users/me',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+  credentials: true,
+};
+app.use('*', cors(options));
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -25,7 +49,7 @@ const limiter = rateLimit({
 });
 
 app.use(helmet());
-app.use(cors);
+// app.use(cors);
 app.use(requestLogger);
 
 app.use(limiter);
