@@ -19,7 +19,7 @@ const app = express();
 const { PORT = 3000, NODE_ENV, MONGODB_ADDRESS  } = process.env;
 const options = {
   origin: [
-    'http://gmkv.nomoredomains.rocks',
+  'http://gmkv.nomoredomains.rocks',
   'https://gmkv.nomoredomains.rocks',
   'http://api.gmkv.nomoredomains.rocks',
   'https://api.gmkv.nomoredomains.rocks',
@@ -27,11 +27,11 @@ const options = {
   'https://localhost:3000',
   'http://localhost:3001',
   'https://localhost:3001',
-  'http://84.252.128.231',
-  'https://84.252.128.231',
-  'http://api.84.252.128.231',
-  'https://api.84.252.128.231',
-  'http://api.84.252.128.231/users/me',
+  'http://84.201.132.131',
+  'https://84.201.132.131',
+  'http://api.84.201.132.131',
+  'https://api.84.201.132.131',
+  'http://api.84.201.132.131/users/me',
   'https://api.gmkv.nomoredomains.rocks/users/me',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
@@ -41,7 +41,7 @@ const options = {
   credentials: true,
 };
 // app.use('*', cors(options));
-app.use(cors())
+app.use(cors(options))
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
