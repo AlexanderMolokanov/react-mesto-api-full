@@ -40,8 +40,8 @@ const options = {
   allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
   credentials: true,
 };
-// app.use('*', cors(options));
-app.use(cors(options))
+app.use('*', cors(options));
+// app.use(cors(options))
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
