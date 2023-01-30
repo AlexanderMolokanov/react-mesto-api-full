@@ -1,6 +1,14 @@
 [![Tests](../../actions/workflows/tests-13-sprint.yml/badge.svg)](../../actions/workflows/tests-13-sprint.yml) [![Tests](../../actions/workflows/tests-14-sprint.yml/badge.svg)](../../actions/workflows/tests-14-sprint.yml)
 # Проект Mesto фронтенд + бэкенд
 
+https://gmkv.nomoredomains.rocks/
+
+httpпшев://gmkv.nomoredomains.rocks/
+
+https://github.com/AlexanderMolokanov/express-mesto-gha
+
+
+IP 158.160.42.114
 
 ## Директории
 
