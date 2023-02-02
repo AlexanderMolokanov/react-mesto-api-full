@@ -119,7 +119,7 @@ app.use((err, req, res, next) => handleError({ res, err, next }));
 async function main() {
   await mongoose.connect(NODE_ENV === 'production' ? MONGODB_ADDRESS : 'mongodb://localhost:27017/mestodb', {
     useNewUrlParser: true,
-    // useCreateIndex: true,
+    useCreateIndex: true,
     // useFindAndModify: false,
     useUnifiedTopology: true,
   });
