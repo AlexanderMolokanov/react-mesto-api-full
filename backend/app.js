@@ -81,8 +81,8 @@ const limiter = rateLimit({
 });
 
 app.use(helmet());
-app.use(limiter);
 app.use(requestLogger);
+app.use(limiter);
 
 app.use(bodyParser.json());
 
