@@ -8,7 +8,7 @@ httpпшев://gmkv.nomoredomains.rocks/
 https://github.com/AlexanderMolokanov/express-mesto-gha
 
 
-IP 158.160.42.114
+IP 158.160.55.39
 
 ## Директории
 
