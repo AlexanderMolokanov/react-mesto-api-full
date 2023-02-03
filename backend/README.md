@@ -3,7 +3,7 @@
 
 https://gmkv.nomoredomains.rocks/
 
-httpпшев://gmkv.nomoredomains.rocks/
+http://gmkv.nomoredomains.rocks/
 
 https://github.com/AlexanderMolokanov/express-mesto-gha
 
